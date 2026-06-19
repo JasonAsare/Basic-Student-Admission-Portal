@@ -37,13 +37,13 @@ class Guardians(models.Model):
     ]
     applicant_id = models.ForeignKey(Applicants, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=255, null=True, blank=False)
-    relatinship = models.CharField(choices=RELATIONSHIP_CHOICES, null=True, blank=False, default='guardian')
+    relationship = models.CharField(choices=RELATIONSHIP_CHOICES, null=True, blank=False, default='guardian')
     phone_number = models.CharField(max_length=255, null=True, blank=False)
     email = models.EmailField(max_length=555, null=True, blank=False)
     address = models.TextField(max_length=255, null=True, blank=False)
 
     def __str__(self):
-        return f"{self.full_name} | {self.applicant_id}'s {self.relatinship}"
+        return f"{self.full_name} | {self.applicant_id}'s {self.relationship}"
 
 class Programs(models.Model):
     LEVEL_CATEGORIES = [
@@ -64,7 +64,7 @@ class Academic_Records(models.Model):
     applicant_id = models.ForeignKey(Applicants, on_delete=models.CASCADE)
     previous_school = models.CharField(max_length=255, null=True, blank=False)
     last_class_completed = models.IntegerField(null=True, blank=False)
-    grade = models.IntegerField(max_length=3, null=True, blank=False)
+    grade = models.IntegerField(null=True, blank=False)
     completion_year = models.IntegerField(null=True, blank=False)
 
     def __str__(self):
